@@ -221,3 +221,7 @@ Lint/LiteralInInterpolation:
   Description: 'Avoid interpolating literals in strings'
   AutoCorrect: false
   Enabled: true
+# added due to Class: Rubocop::Cop::Style::EndOfLine
+# This cop checks for Windows-style line endings in the source code.
+EndOfLine:
+  Enabled: false

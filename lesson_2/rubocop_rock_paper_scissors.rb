@@ -1,24 +1,27 @@
-# ROCK, PAPER, SCISSORS
+# rubocop: rock, paper, scissors.
+VALID_CHOICES = %w(rock paper scissors)
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
+def win?(first, second)
+  (first == 'rock' && second == 'scissors') ||
+    (first == 'paper' && second == 'rock') ||
+    (first == 'scissors' && second == 'paper')
+end
+
 def display_results(player, computer)
-  if (player == 'rock' && computer == 'scissors') ||
-     (player == 'paper' && computer == 'rock') ||
-     (player == 'scissors' && computer == 'paper')
-    return "You won!"
-  elsif (player == 'rock' && computer == 'paper') ||
-        (player == 'paper' && computer == 'scissors') ||
-        (player == 'scissors' && computer == 'rock')
-    return "You won!"
+  if win?(player, computer)
+    "You won!"
+  elsif win?(computer, player)
+    "Computer won!"
   else
-    return "It's a tie."
+    "It's a tie."
   end
 end
 
 loop do
-  VALID_CHOICES = ['rock', 'paper', 'scissors']
   # needs to be initialized outside of the loop so that we may use it
   choice = ''
   loop do
